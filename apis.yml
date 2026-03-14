@@ -1,0 +1,15 @@
+name: Microsoft Office Integration
+description: >-
+  APIs for Microsoft Office Integration, connecting Microsoft Office
+  components and systems for seamless data exchange and end-to-end
+  workflows across multiple technologies and platforms.
+url: https://www.microsoft.com/en-us/microsoft-365
+created: "2025-01-01"
+modified: "2025-01-01"
+specificationVersion: "0.18"
+tags:
+- Microsoft Office Integration
+- Microsoft 365
+maintainers:
+- FN: Kin Lane
+  email: info@apievangelist.com
