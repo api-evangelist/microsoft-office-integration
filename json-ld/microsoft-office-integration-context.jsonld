@@ -1,0 +1,70 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "office365": "https://learn.microsoft.com/en-us/office/office-365-management-api/",
+    "graph": "https://learn.microsoft.com/en-us/graph/",
+    "Subscription": {
+      "@id": "office365:office-365-management-activity-api-reference#subscription",
+      "@context": {
+        "contentType": "office365:contentType",
+        "status": "schema:status",
+        "webhook": "office365:webhook"
+      }
+    },
+    "ActivityRecord": {
+      "@id": "office365:office-365-management-activity-api-schema",
+      "@context": {
+        "CreationTime": "schema:dateCreated",
+        "Operation": "schema:name",
+        "OrganizationId": "schema:identifier",
+        "RecordType": "schema:additionalType",
+        "ResultStatus": "schema:status",
+        "Workload": "schema:serviceType",
+        "UserId": "schema:identifier",
+        "ClientIP": "schema:identifier"
+      }
+    },
+    "ContentBlob": {
+      "@id": "office365:office-365-management-activity-api-reference#content",
+      "@context": {
+        "contentType": "schema:encodingFormat",
+        "contentId": "schema:identifier",
+        "contentUri": "schema:url",
+        "contentCreated": "schema:dateCreated",
+        "contentExpiration": "schema:expires"
+      }
+    },
+    "Service": {
+      "@id": "office365:office-365-service-communications-api-reference#service",
+      "@context": {
+        "Id": "schema:identifier",
+        "DisplayName": "schema:name",
+        "FeatureNames": "schema:featureList"
+      }
+    },
+    "WorkloadStatus": {
+      "@id": "office365:office-365-service-communications-api-reference#workload-status",
+      "@context": {
+        "Id": "schema:identifier",
+        "Workload": "schema:name",
+        "StatusDate": "schema:dateModified",
+        "WorkloadDisplayName": "schema:name",
+        "Status": "schema:status",
+        "IncidentIds": "schema:identifier"
+      }
+    },
+    "Message": {
+      "@id": "office365:office-365-service-communications-api-reference#messages",
+      "@context": {
+        "Id": "schema:identifier",
+        "Title": "schema:headline",
+        "StartTime": "schema:startDate",
+        "EndTime": "schema:endDate",
+        "Status": "schema:status",
+        "LastUpdatedTime": "schema:dateModified",
+        "Workload": "schema:serviceType",
+        "MessageType": "schema:additionalType"
+      }
+    }
+  }
+}

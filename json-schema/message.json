@@ -1,0 +1,81 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "message.json",
+  "title": "Message",
+  "description": "A service communication message from the Office 365 Service Communications API representing an incident, planned maintenance, or Message Center communication.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "The message identifier."
+    },
+    "Name": {
+      "type": "string",
+      "description": "The message name."
+    },
+    "Title": {
+      "type": ["string", "null"],
+      "description": "The title of the message."
+    },
+    "StartTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The start time of the event."
+    },
+    "EndTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The end time of the event."
+    },
+    "Status": {
+      "type": "string",
+      "description": "The current status of the event."
+    },
+    "Messages": {
+      "type": "array",
+      "description": "History of messages published for this event.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "PublishedTime": {
+            "type": "string",
+            "format": "date-time",
+            "description": "The time the message was published."
+          },
+          "MessageText": {
+            "type": "string",
+            "description": "The text content of the message."
+          }
+        },
+        "required": ["PublishedTime", "MessageText"]
+      }
+    },
+    "LastUpdatedTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The last time the message was updated."
+    },
+    "Workload": {
+      "type": "string",
+      "description": "The workload associated with the message."
+    },
+    "WorkloadDisplayName": {
+      "type": "string",
+      "description": "The display name of the workload."
+    },
+    "Feature": {
+      "type": "string",
+      "description": "The feature associated with the message."
+    },
+    "FeatureDisplayName": {
+      "type": "string",
+      "description": "The display name of the feature."
+    },
+    "MessageType": {
+      "type": "string",
+      "description": "The type of message.",
+      "enum": ["Incident", "PlannedMaintenance", "MessageCenter"]
+    }
+  },
+  "required": ["Id", "StartTime", "Status", "Messages", "LastUpdatedTime"]
+}

@@ -1,0 +1,325 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Office 365 Service Communications API
+  description: >-
+    The Office 365 Service Communications API provides tenant administrators and
+    partners with real-time service health information and Message Center
+    communications. It enables access to current and historical service status,
+    incident details, and planned maintenance notifications for Office 365,
+    Yammer, Dynamics CRM, and Microsoft Intune cloud services. The API relies on
+    Microsoft Entra ID and the OAuth2 protocol for authentication.
+  version: 1.0.0
+  contact:
+    name: Microsoft
+    url: https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-service-communications-api-reference
+servers:
+  - url: https://manage.office.com/api/v1.0/{tenantId}/ServiceComms
+    description: Office 365 Service Communications endpoint
+    variables:
+      tenantId:
+        description: The tenant identifier (domain or GUID)
+        default: contoso.com
+security:
+  - bearerAuth: []
+paths:
+  /Services:
+    get:
+      operationId: getServices
+      summary: Get Services
+      description: Returns the list of subscribed services.
+      parameters:
+        - name: $select
+          in: query
+          required: false
+          description: Pick a subset of properties.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of subscribed services.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Service'
+  /CurrentStatus:
+    get:
+      operationId: getCurrentStatus
+      summary: Get Current Status
+      description: >-
+        Returns the status of the service from the previous 24 hours, including
+        any current and ongoing service incidents.
+      parameters:
+        - name: Workload
+          in: query
+          required: false
+          description: Filter by workload (default is all).
+          schema:
+            type: string
+        - name: $select
+          in: query
+          required: false
+          description: Pick a subset of properties.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Current status of services.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkloadStatus'
+  /HistoricalStatus:
+    get:
+      operationId: getHistoricalStatus
+      summary: Get Historical Status
+      description: Returns the historical status of the service, by day, over a certain time range.
+      parameters:
+        - name: Workload
+          in: query
+          required: false
+          description: Filter by workload (default is all).
+          schema:
+            type: string
+        - name: StatusTime
+          in: query
+          required: false
+          description: Filter by days greater than StatusTime (default ge CurrentTime - 7 days).
+          schema:
+            type: string
+            format: date-time
+        - name: $select
+          in: query
+          required: false
+          description: Pick a subset of properties.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Historical status of services.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkloadStatus'
+  /Messages:
+    get:
+      operationId: getMessages
+      summary: Get Messages
+      description: >-
+        Returns messages about the service over a certain time range. Use the
+        MessageType filter to filter for Service Incident, Planned Maintenance,
+        or Message Center messages.
+      parameters:
+        - name: Workload
+          in: query
+          required: false
+          description: Filter by workload (default is all).
+          schema:
+            type: string
+        - name: StartTime
+          in: query
+          required: false
+          description: Filter by start time (default ge CurrentTime - 7 days).
+          schema:
+            type: string
+            format: date-time
+        - name: EndTime
+          in: query
+          required: false
+          description: Filter by end time (default le CurrentTime).
+          schema:
+            type: string
+            format: date-time
+        - name: MessageType
+          in: query
+          required: false
+          description: Filter by message type (default is all).
+          schema:
+            type: string
+            enum:
+              - Incident
+              - PlannedMaintenance
+              - MessageCenter
+        - name: Id
+          in: query
+          required: false
+          description: Filter by specific message Id.
+          schema:
+            type: string
+        - name: $select
+          in: query
+          required: false
+          description: Pick a subset of properties.
+          schema:
+            type: string
+        - name: $top
+          in: query
+          required: false
+          description: Number of top results to return (default and max 100).
+          schema:
+            type: integer
+            maximum: 100
+            default: 100
+        - name: $skip
+          in: query
+          required: false
+          description: Number of results to skip (default 0).
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          description: List of service messages.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Message'
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth2 JWT access token obtained from Microsoft Entra ID with ServiceHealth.Read claim.
+  schemas:
+    Service:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: The service identifier.
+        DisplayName:
+          type: string
+          description: The display name of the service.
+        FeatureNames:
+          type: array
+          description: List of features for the service.
+          items:
+            type: string
+    FeatureStatus:
+      type: object
+      properties:
+        Feature:
+          type: string
+        FeatureGroupDisplayName:
+          type: string
+        FeatureStatus:
+          type: string
+          enum:
+            - ServiceOperational
+            - Investigating
+            - ServiceDegradation
+            - ServiceInterruption
+            - RestoringService
+            - ExtendedRecovery
+            - InvestigationSuspended
+            - ServiceRestored
+            - FalsePositive
+            - PostIncidentReportPublished
+            - InformationAvailable
+    WorkloadStatus:
+      type: object
+      properties:
+        Id:
+          type: string
+        Workload:
+          type: string
+        StatusDate:
+          type: string
+          format: date-time
+        WorkloadDisplayName:
+          type: string
+        Status:
+          type: string
+          enum:
+            - ServiceOperational
+            - Investigating
+            - ServiceDegradation
+            - ServiceInterruption
+            - RestoringService
+            - ExtendedRecovery
+            - InvestigationSuspended
+            - ServiceRestored
+            - FalsePositive
+            - PostIncidentReportPublished
+            - InformationAvailable
+        IncidentIds:
+          type: array
+          items:
+            type: string
+        FeatureGroupStatusCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureStatus'
+    MessageHistory:
+      type: object
+      properties:
+        PublishedTime:
+          type: string
+          format: date-time
+        MessageText:
+          type: string
+    Message:
+      type: object
+      properties:
+        Id:
+          type: string
+        Name:
+          type: string
+        Title:
+          type: string
+          nullable: true
+        StartTime:
+          type: string
+          format: date-time
+        EndTime:
+          type: string
+          format: date-time
+        Status:
+          type: string
+        Messages:
+          type: array
+          items:
+            $ref: '#/components/schemas/MessageHistory'
+        LastUpdatedTime:
+          type: string
+          format: date-time
+        Workload:
+          type: string
+        WorkloadDisplayName:
+          type: string
+        Feature:
+          type: string
+        FeatureDisplayName:
+          type: string
+        MessageType:
+          type: string
+    Error:
+      type: object
+      properties:
+        error:
+          type: object
+          properties:
+            code:
+              type: string
+            message:
+              type: string

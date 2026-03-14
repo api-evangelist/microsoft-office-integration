@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "workload-status.json",
+  "title": "WorkloadStatus",
+  "description": "The health status of an Office 365 workload as returned by the Service Communications API current and historical status endpoints.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "The workload identifier."
+    },
+    "Workload": {
+      "type": "string",
+      "description": "The workload name."
+    },
+    "StatusDate": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date of the status."
+    },
+    "WorkloadDisplayName": {
+      "type": "string",
+      "description": "The display name of the workload."
+    },
+    "Status": {
+      "type": "string",
+      "description": "The overall status of the workload.",
+      "enum": [
+        "ServiceOperational",
+        "Investigating",
+        "ServiceDegradation",
+        "ServiceInterruption",
+        "RestoringService",
+        "ExtendedRecovery",
+        "InvestigationSuspended",
+        "ServiceRestored",
+        "FalsePositive",
+        "PostIncidentReportPublished",
+        "InformationAvailable"
+      ]
+    },
+    "IncidentIds": {
+      "type": "array",
+      "description": "List of incident identifiers affecting the workload.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "FeatureGroupStatusCollection": {
+      "type": "array",
+      "description": "Status of individual features within the workload.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Feature": {
+            "type": "string",
+            "description": "The feature identifier."
+          },
+          "FeatureGroupDisplayName": {
+            "type": "string",
+            "description": "The display name of the feature."
+          },
+          "FeatureStatus": {
+            "type": "string",
+            "description": "The status of the feature.",
+            "enum": [
+              "ServiceOperational",
+              "Investigating",
+              "ServiceDegradation",
+              "ServiceInterruption",
+              "RestoringService",
+              "ExtendedRecovery",
+              "InvestigationSuspended",
+              "ServiceRestored",
+              "FalsePositive",
+              "PostIncidentReportPublished",
+              "InformationAvailable"
+            ]
+          }
+        },
+        "required": ["Feature", "FeatureGroupDisplayName", "FeatureStatus"]
+      }
+    }
+  },
+  "required": ["Id", "Workload", "StatusDate", "WorkloadDisplayName", "Status"]
+}

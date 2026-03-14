@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "service.json",
+  "title": "Service",
+  "description": "A subscribed Office 365 service as returned by the Service Communications API.",
+  "type": "object",
+  "properties": {
+    "Id": {
+      "type": "string",
+      "description": "The service identifier (e.g. Exchange, Lync, SharePoint)."
+    },
+    "DisplayName": {
+      "type": "string",
+      "description": "The display name of the service."
+    },
+    "FeatureNames": {
+      "type": "array",
+      "description": "List of feature names available for the service.",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": ["Id", "DisplayName", "FeatureNames"]
+}

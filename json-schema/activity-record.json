@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "activity-record.json",
+  "title": "ActivityRecord",
+  "description": "An audit activity record from the Office 365 Management Activity API representing a user, admin, system, or policy action or event.",
+  "type": "object",
+  "properties": {
+    "CreationTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The date and time in UTC when the user performed the activity."
+    },
+    "Id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier of an audit record."
+    },
+    "Operation": {
+      "type": "string",
+      "description": "The name of the user or admin activity."
+    },
+    "OrganizationId": {
+      "type": "string",
+      "format": "uuid",
+      "description": "The GUID for the organization's tenant."
+    },
+    "RecordType": {
+      "type": "integer",
+      "description": "The type of operation indicated by the record."
+    },
+    "ResultStatus": {
+      "type": "string",
+      "description": "Indicates whether the action was successful or not.",
+      "enum": ["success", "failed", "partiallySucceeded"]
+    },
+    "UserKey": {
+      "type": "string",
+      "description": "A unique ID for the user identified in the UserId property."
+    },
+    "UserType": {
+      "type": "integer",
+      "description": "The type of user that performed the operation."
+    },
+    "Workload": {
+      "type": "string",
+      "description": "The Office 365 service where the activity occurred."
+    },
+    "ClientIP": {
+      "type": "string",
+      "description": "The IP address of the device used when the activity was logged."
+    },
+    "ObjectId": {
+      "type": "string",
+      "description": "The object that was accessed or modified by the activity."
+    },
+    "UserId": {
+      "type": "string",
+      "description": "The user who performed the action that resulted in the record being logged."
+    }
+  },
+  "required": ["CreationTime", "Id", "Operation", "OrganizationId", "RecordType", "UserId"]
+}

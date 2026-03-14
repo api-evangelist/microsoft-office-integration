@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "content-blob.json",
+  "title": "ContentBlob",
+  "description": "A content blob reference from the Office 365 Management Activity API representing aggregated audit actions and events available for retrieval.",
+  "type": "object",
+  "properties": {
+    "contentType": {
+      "type": "string",
+      "description": "The content type of the blob.",
+      "enum": [
+        "Audit.AzureActiveDirectory",
+        "Audit.Exchange",
+        "Audit.SharePoint",
+        "Audit.General",
+        "DLP.All"
+      ]
+    },
+    "contentId": {
+      "type": "string",
+      "description": "An opaque string that uniquely identifies the content."
+    },
+    "contentUri": {
+      "type": "string",
+      "format": "uri",
+      "description": "The URL to use when retrieving the content."
+    },
+    "contentCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The datetime when the content was made available."
+    },
+    "contentExpiration": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The datetime after which the content will no longer be available for retrieval."
+    }
+  },
+  "required": ["contentType", "contentId", "contentUri", "contentCreated", "contentExpiration"]
+}
