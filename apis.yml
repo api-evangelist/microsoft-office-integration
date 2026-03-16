@@ -85,7 +85,7 @@ common:
     type: Portal
     description: 'null'
 created: '2025-01-01'
-modified: '2026-03-14'
+modified: '2026-03-16'
 position: Consumer
 description: >-
   APIs for Microsoft Office Integration, connecting Microsoft Office components
@@ -96,5 +96,5 @@ description: >-
   industry-standard approaches including OAuth v2, OData v4, and JSON.
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
 specificationVersion: '0.19'
