@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Microsoft Office 365 Service Communications API
+  title: Microsoft Office Integration Microsoft Office 365 Service Communications API
   description: >-
     The Office 365 Service Communications API provides tenant administrators and
     partners with real-time service health information and Message Center
@@ -25,7 +25,7 @@ paths:
   /Services:
     get:
       operationId: getServices
-      summary: Get Services
+      summary: Microsoft Office Integration Get Services
       description: Returns the list of subscribed services.
       parameters:
         - name: $select
@@ -49,7 +49,7 @@ paths:
   /CurrentStatus:
     get:
       operationId: getCurrentStatus
-      summary: Get Current Status
+      summary: Microsoft Office Integration Get Current Status
       description: >-
         Returns the status of the service from the previous 24 hours, including
         any current and ongoing service incidents.
@@ -81,7 +81,7 @@ paths:
   /HistoricalStatus:
     get:
       operationId: getHistoricalStatus
-      summary: Get Historical Status
+      summary: Microsoft Office Integration Get Historical Status
       description: Returns the historical status of the service, by day, over a certain time range.
       parameters:
         - name: Workload
@@ -118,7 +118,7 @@ paths:
   /Messages:
     get:
       operationId: getMessages
-      summary: Get Messages
+      summary: Microsoft Office Integration Get Messages
       description: >-
         Returns messages about the service over a certain time range. Use the
         MessageType filter to filter for Service Incident, Planned Maintenance,

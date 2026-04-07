@@ -1,6 +1,6 @@
 openapi: 3.0.3
 info:
-  title: Microsoft Office 365 Management Activity API
+  title: Microsoft Office Integration Microsoft Office 365 Management Activity API
   description: >-
     The Office 365 Management Activity API provides information about various
     user, admin, system, and policy actions and events from Office 365 and
@@ -44,7 +44,7 @@ paths:
   /subscriptions/start:
     post:
       operationId: startSubscription
-      summary: Start a subscription
+      summary: Microsoft Office Integration Start a subscription
       description: >-
         Starts a subscription to the specified content type. If a subscription
         already exists, this operation can update webhook properties, enable a
@@ -90,7 +90,7 @@ paths:
   /subscriptions/stop:
     post:
       operationId: stopSubscription
-      summary: Stop a subscription
+      summary: Microsoft Office Integration Stop a subscription
       description: Stops a subscription to the specified content type.
       parameters:
         - name: contentType
@@ -116,7 +116,7 @@ paths:
   /subscriptions/list:
     get:
       operationId: listSubscriptions
-      summary: List current subscriptions
+      summary: Microsoft Office Integration List current subscriptions
       description: Returns a collection of the current subscriptions together with associated webhooks.
       parameters:
         - name: PublisherIdentifier
@@ -137,7 +137,7 @@ paths:
   /subscriptions/content:
     get:
       operationId: listAvailableContent
-      summary: List available content
+      summary: Microsoft Office Integration List available content
       description: >-
         Lists the content currently available for retrieval for the specified
         content type. Content is an aggregation of actions and events harvested
@@ -196,7 +196,7 @@ paths:
   /subscriptions/notifications:
     get:
       operationId: listNotifications
-      summary: List notifications
+      summary: Microsoft Office Integration List notifications
       description: >-
         Lists all notification attempts for the specified content type. Can
         return multiple notifications for the same content due to retries.
@@ -248,7 +248,7 @@ paths:
   /resources/dlpSensitiveTypes:
     get:
       operationId: listDlpSensitiveTypes
-      summary: Retrieve resource friendly names
+      summary: Microsoft Office Integration Retrieve resource friendly names
       description: >-
         Retrieves friendly names for objects in the data feed identified by
         GUIDs. Currently only DlpSensitiveType is supported.
