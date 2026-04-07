@@ -46,6 +46,8 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Service'
+      tags:
+        - Services
   /CurrentStatus:
     get:
       operationId: getCurrentStatus
@@ -78,6 +80,8 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/WorkloadStatus'
+      tags:
+        - CurrentStatus
   /HistoricalStatus:
     get:
       operationId: getHistoricalStatus
@@ -115,6 +119,8 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/WorkloadStatus'
+      tags:
+        - HistoricalStatus
   /Messages:
     get:
       operationId: getMessages
@@ -193,6 +199,8 @@ paths:
                     type: array
                     items:
                       $ref: '#/components/schemas/Message'
+      tags:
+        - Messages
 components:
   securitySchemes:
     bearerAuth:
@@ -323,3 +331,8 @@ components:
               type: string
             message:
               type: string
+tags:
+  - name: CurrentStatus
+  - name: HistoricalStatus
+  - name: Messages
+  - name: Services

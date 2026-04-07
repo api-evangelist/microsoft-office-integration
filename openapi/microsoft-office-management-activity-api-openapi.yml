@@ -87,6 +87,8 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Subscription'
+      tags:
+        - Subscriptions
   /subscriptions/stop:
     post:
       operationId: stopSubscription
@@ -113,6 +115,8 @@ paths:
       responses:
         '200':
           description: Subscription stopped successfully.
+      tags:
+        - Subscriptions
   /subscriptions/list:
     get:
       operationId: listSubscriptions
@@ -134,6 +138,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Subscription'
+      tags:
+        - Subscriptions
   /subscriptions/content:
     get:
       operationId: listAvailableContent
@@ -193,6 +199,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/ContentBlob'
+      tags:
+        - Subscriptions
   /subscriptions/notifications:
     get:
       operationId: listNotifications
@@ -245,6 +253,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/Notification'
+      tags:
+        - Subscriptions
   /resources/dlpSensitiveTypes:
     get:
       operationId: listDlpSensitiveTypes
@@ -274,6 +284,8 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/DlpSensitiveType'
+      tags:
+        - Resources
 components:
   securitySchemes:
     bearerAuth:
@@ -416,3 +428,6 @@ components:
               type: string
             message:
               type: string
+tags:
+  - name: Resources
+  - name: Subscriptions

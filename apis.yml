@@ -5,9 +5,9 @@ apis:
   - aid: microsoft-office-integration:management-activity-api
     name: Microsoft Office 365 Management Activity API
     tags:
-      - Office 365
       - Auditing
       - Compliance
+      - Office 365
       - Security
     humanURL: https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
     properties:
@@ -34,10 +34,10 @@ apis:
   - aid: microsoft-office-integration:service-communications-api
     name: Microsoft Office 365 Service Communications API
     tags:
+      - Incidents
+      - Monitoring
       - Office 365
       - Service Health
-      - Monitoring
-      - Incidents
     humanURL: https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-service-communications-api-reference
     properties:
       - url: https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-service-communications-api-reference
@@ -61,8 +61,8 @@ apis:
       Microsoft Intune cloud services.
 name: Microsoft Office Integration
 tags:
-  - Microsoft Office Integration
   - Microsoft 365
+  - Microsoft Office Integration
   - Office 365
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
