@@ -85,7 +85,7 @@ common:
     type: Portal
     description: 'null'
 created: '2025-01-01'
-modified: '2026-03-16'
+modified: '2026-04-28'
 position: Consumer
 description: >-
   APIs for Microsoft Office Integration, connecting Microsoft Office components
