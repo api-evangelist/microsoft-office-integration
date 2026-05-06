@@ -1,0 +1,358 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Office Integration Microsoft Office 365 Management Activity API
+  description: The Office 365 Management Activity API provides information about various user, admin, system, and policy actions
+    and events from Office 365 and Microsoft Entra activity logs. Customers and partners can use this information to create
+    new or enhance existing operations, security, and compliance-monitoring solutions for the enterprise. The API relies on
+    Microsoft Entra ID and the OAuth2 protocol for authentication and authorization.
+  tags:
+  - Microsoft
+  - Office
+  - Integration
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-office-integration
+    baseUri: https://manage.office.com/api/v1.0/{tenant_id}/activity/feed
+    description: Microsoft Office Integration Microsoft Office 365 Management Activity API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{MICROSOFT_OFFICE_INTEGRATION_TOKEN}}'
+    resources:
+    - name: subscriptions-start
+      path: /subscriptions/start
+      operations:
+      - name: startsubscription
+        method: POST
+        description: Microsoft Office Integration Start a subscription
+        inputParameters:
+        - name: contentType
+          in: query
+          type: string
+          required: true
+          description: Must be a valid content type.
+        - name: PublisherIdentifier
+          in: query
+          type: string
+          description: The tenant GUID of the vendor coding against the API. Used for throttling the request rate.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-stop
+      path: /subscriptions/stop
+      operations:
+      - name: stopsubscription
+        method: POST
+        description: Microsoft Office Integration Stop a subscription
+        inputParameters:
+        - name: contentType
+          in: query
+          type: string
+          required: true
+        - name: PublisherIdentifier
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-list
+      path: /subscriptions/list
+      operations:
+      - name: listsubscriptions
+        method: GET
+        description: Microsoft Office Integration List current subscriptions
+        inputParameters:
+        - name: PublisherIdentifier
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-content
+      path: /subscriptions/content
+      operations:
+      - name: listavailablecontent
+        method: GET
+        description: Microsoft Office Integration List available content
+        inputParameters:
+        - name: contentType
+          in: query
+          type: string
+          required: true
+        - name: PublisherIdentifier
+          in: query
+          type: string
+        - name: startTime
+          in: query
+          type: string
+          description: Start of the time range (UTC). Must be specified together with endTime and no more than 24 hours apart.
+        - name: endTime
+          in: query
+          type: string
+          description: End of the time range (UTC). Must be specified together with startTime and no more than 24 hours apart.
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: subscriptions-notifications
+      path: /subscriptions/notifications
+      operations:
+      - name: listnotifications
+        method: GET
+        description: Microsoft Office Integration List notifications
+        inputParameters:
+        - name: contentType
+          in: query
+          type: string
+          required: true
+        - name: PublisherIdentifier
+          in: query
+          type: string
+        - name: startTime
+          in: query
+          type: string
+        - name: endTime
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: resources-dlpsensitivetypes
+      path: /resources/dlpSensitiveTypes
+      operations:
+      - name: listdlpsensitivetypes
+        method: GET
+        description: Microsoft Office Integration Retrieve resource friendly names
+        inputParameters:
+        - name: PublisherIdentifier
+          in: query
+          type: string
+        - name: Accept-Language
+          in: header
+          type: string
+          description: Language code for localized names (e.g. en-US, es).
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: microsoft-office-integration-rest
+    description: REST adapter for Microsoft Office Integration Microsoft Office 365 Management Activity API.
+    resources:
+    - path: /subscriptions/start
+      name: startsubscription
+      operations:
+      - method: POST
+        name: startsubscription
+        description: Microsoft Office Integration Start a subscription
+        call: microsoft-office-integration.startsubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /subscriptions/stop
+      name: stopsubscription
+      operations:
+      - method: POST
+        name: stopsubscription
+        description: Microsoft Office Integration Stop a subscription
+        call: microsoft-office-integration.stopsubscription
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /subscriptions/list
+      name: listsubscriptions
+      operations:
+      - method: GET
+        name: listsubscriptions
+        description: Microsoft Office Integration List current subscriptions
+        call: microsoft-office-integration.listsubscriptions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /subscriptions/content
+      name: listavailablecontent
+      operations:
+      - method: GET
+        name: listavailablecontent
+        description: Microsoft Office Integration List available content
+        call: microsoft-office-integration.listavailablecontent
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /subscriptions/notifications
+      name: listnotifications
+      operations:
+      - method: GET
+        name: listnotifications
+        description: Microsoft Office Integration List notifications
+        call: microsoft-office-integration.listnotifications
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /resources/dlpSensitiveTypes
+      name: listdlpsensitivetypes
+      operations:
+      - method: GET
+        name: listdlpsensitivetypes
+        description: Microsoft Office Integration Retrieve resource friendly names
+        call: microsoft-office-integration.listdlpsensitivetypes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: microsoft-office-integration-mcp
+    transport: http
+    description: MCP adapter for Microsoft Office Integration Microsoft Office 365 Management Activity API for AI agent use.
+    tools:
+    - name: startsubscription
+      description: Microsoft Office Integration Start a subscription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-office-integration.startsubscription
+      with:
+        contentType: tools.contentType
+        PublisherIdentifier: tools.PublisherIdentifier
+      inputParameters:
+      - name: contentType
+        type: string
+        description: Must be a valid content type.
+        required: true
+      - name: PublisherIdentifier
+        type: string
+        description: The tenant GUID of the vendor coding against the API. Used for throttling the request rate.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: stopsubscription
+      description: Microsoft Office Integration Stop a subscription
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-office-integration.stopsubscription
+      with:
+        contentType: tools.contentType
+        PublisherIdentifier: tools.PublisherIdentifier
+      inputParameters:
+      - name: contentType
+        type: string
+        description: contentType
+        required: true
+      - name: PublisherIdentifier
+        type: string
+        description: PublisherIdentifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listsubscriptions
+      description: Microsoft Office Integration List current subscriptions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-office-integration.listsubscriptions
+      with:
+        PublisherIdentifier: tools.PublisherIdentifier
+      inputParameters:
+      - name: PublisherIdentifier
+        type: string
+        description: PublisherIdentifier
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listavailablecontent
+      description: Microsoft Office Integration List available content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-office-integration.listavailablecontent
+      with:
+        contentType: tools.contentType
+        PublisherIdentifier: tools.PublisherIdentifier
+        startTime: tools.startTime
+        endTime: tools.endTime
+      inputParameters:
+      - name: contentType
+        type: string
+        description: contentType
+        required: true
+      - name: PublisherIdentifier
+        type: string
+        description: PublisherIdentifier
+      - name: startTime
+        type: string
+        description: Start of the time range (UTC). Must be specified together with endTime and no more than 24 hours apart.
+      - name: endTime
+        type: string
+        description: End of the time range (UTC). Must be specified together with startTime and no more than 24 hours apart.
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listnotifications
+      description: Microsoft Office Integration List notifications
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-office-integration.listnotifications
+      with:
+        contentType: tools.contentType
+        PublisherIdentifier: tools.PublisherIdentifier
+        startTime: tools.startTime
+        endTime: tools.endTime
+      inputParameters:
+      - name: contentType
+        type: string
+        description: contentType
+        required: true
+      - name: PublisherIdentifier
+        type: string
+        description: PublisherIdentifier
+      - name: startTime
+        type: string
+        description: startTime
+      - name: endTime
+        type: string
+        description: endTime
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listdlpsensitivetypes
+      description: Microsoft Office Integration Retrieve resource friendly names
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-office-integration.listdlpsensitivetypes
+      with:
+        PublisherIdentifier: tools.PublisherIdentifier
+      inputParameters:
+      - name: PublisherIdentifier
+        type: string
+        description: PublisherIdentifier
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_OFFICE_INTEGRATION_TOKEN: MICROSOFT_OFFICE_INTEGRATION_TOKEN
