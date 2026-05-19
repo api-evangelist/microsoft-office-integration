@@ -1,0 +1,86 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Office Integration Microsoft Office 365 Management Activity API — Resources
+  description: 'Microsoft Office Integration Microsoft Office 365 Management Activity API — Resources. 1 operations. Lead
+    operation: Microsoft Office Integration Retrieve resource friendly names. Self-contained Naftiko capability covering one
+    Microsoft Office Integration business surface.'
+  tags:
+  - Microsoft Office Integration
+  - Resources
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_OFFICE_INTEGRATION_API_KEY: MICROSOFT_OFFICE_INTEGRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-office-management-activity-resources
+    baseUri: https://manage.office.com/api/v1.0/{tenantId}/activity/feed
+    description: Microsoft Office Integration Microsoft Office 365 Management Activity API — Resources business capability.
+      Self-contained, no shared references.
+    resources:
+    - name: resources-dlpSensitiveTypes
+      path: /resources/dlpSensitiveTypes
+      operations:
+      - name: listdlpsensitivetypes
+        method: GET
+        description: Microsoft Office Integration Retrieve resource friendly names
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: PublisherIdentifier
+          in: query
+          type: string
+        - name: Accept-Language
+          in: header
+          type: string
+          description: Language code for localized names (e.g. en-US, es).
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_OFFICE_INTEGRATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: microsoft-office-management-activity-resources-rest
+    port: 8080
+    description: REST adapter for Microsoft Office Integration Microsoft Office 365 Management Activity API — Resources. One
+      Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/resources/dlpsensitivetypes
+      name: resources-dlpsensitivetypes
+      description: REST surface for resources-dlpSensitiveTypes.
+      operations:
+      - method: GET
+        name: listdlpsensitivetypes
+        description: Microsoft Office Integration Retrieve resource friendly names
+        call: microsoft-office-management-activity-resources.listdlpsensitivetypes
+        with:
+          PublisherIdentifier: rest.PublisherIdentifier
+          Accept-Language: rest.Accept-Language
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: microsoft-office-management-activity-resources-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Office Integration Microsoft Office 365 Management Activity API — Resources. One
+      tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-office-integration-retrieve-resource
+      description: Microsoft Office Integration Retrieve resource friendly names
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-office-management-activity-resources.listdlpsensitivetypes
+      with:
+        PublisherIdentifier: tools.PublisherIdentifier
+        Accept-Language: tools.Accept-Language
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,87 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Office Integration Microsoft Office 365 Service Communications API — CurrentStatus
+  description: 'Microsoft Office Integration Microsoft Office 365 Service Communications API — CurrentStatus. 1 operations.
+    Lead operation: Microsoft Office Integration Get Current Status. Self-contained Naftiko capability covering one Microsoft
+    Office Integration business surface.'
+  tags:
+  - Microsoft Office Integration
+  - CurrentStatus
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_OFFICE_INTEGRATION_API_KEY: MICROSOFT_OFFICE_INTEGRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-office-service-communications-currentstatus
+    baseUri: https://manage.office.com/api/v1.0/{tenantId}/ServiceComms
+    description: Microsoft Office Integration Microsoft Office 365 Service Communications API — CurrentStatus business capability.
+      Self-contained, no shared references.
+    resources:
+    - name: CurrentStatus
+      path: /CurrentStatus
+      operations:
+      - name: getcurrentstatus
+        method: GET
+        description: Microsoft Office Integration Get Current Status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: Workload
+          in: query
+          type: string
+          description: Filter by workload (default is all).
+        - name: $select
+          in: query
+          type: string
+          description: Pick a subset of properties.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_OFFICE_INTEGRATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: microsoft-office-service-communications-currentstatus-rest
+    port: 8080
+    description: REST adapter for Microsoft Office Integration Microsoft Office 365 Service Communications API — CurrentStatus.
+      One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/currentstatus
+      name: currentstatus
+      description: REST surface for CurrentStatus.
+      operations:
+      - method: GET
+        name: getcurrentstatus
+        description: Microsoft Office Integration Get Current Status
+        call: microsoft-office-service-communications-currentstatus.getcurrentstatus
+        with:
+          Workload: rest.Workload
+          $select: rest.$select
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: microsoft-office-service-communications-currentstatus-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Office Integration Microsoft Office 365 Service Communications API — CurrentStatus.
+      One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-office-integration-get-current
+      description: Microsoft Office Integration Get Current Status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-office-service-communications-currentstatus.getcurrentstatus
+      with:
+        Workload: tools.Workload
+        $select: tools.$select
+      outputParameters:
+      - type: object
+        mapping: $.

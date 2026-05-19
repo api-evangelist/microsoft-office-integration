@@ -1,0 +1,81 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Office Integration Microsoft Office 365 Service Communications API — Services
+  description: 'Microsoft Office Integration Microsoft Office 365 Service Communications API — Services. 1 operations. Lead
+    operation: Microsoft Office Integration Get Services. Self-contained Naftiko capability covering one Microsoft Office
+    Integration business surface.'
+  tags:
+  - Microsoft Office Integration
+  - Services
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_OFFICE_INTEGRATION_API_KEY: MICROSOFT_OFFICE_INTEGRATION_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-office-service-communications-services
+    baseUri: https://manage.office.com/api/v1.0/{tenantId}/ServiceComms
+    description: Microsoft Office Integration Microsoft Office 365 Service Communications API — Services business capability.
+      Self-contained, no shared references.
+    resources:
+    - name: Services
+      path: /Services
+      operations:
+      - name: getservices
+        method: GET
+        description: Microsoft Office Integration Get Services
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: $select
+          in: query
+          type: string
+          description: Pick a subset of properties.
+    authentication:
+      type: bearer
+      token: '{{env.MICROSOFT_OFFICE_INTEGRATION_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: microsoft-office-service-communications-services-rest
+    port: 8080
+    description: REST adapter for Microsoft Office Integration Microsoft Office 365 Service Communications API — Services.
+      One Spectral-compliant resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/services
+      name: services
+      description: REST surface for Services.
+      operations:
+      - method: GET
+        name: getservices
+        description: Microsoft Office Integration Get Services
+        call: microsoft-office-service-communications-services.getservices
+        with:
+          $select: rest.$select
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: microsoft-office-service-communications-services-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Office Integration Microsoft Office 365 Service Communications API — Services.
+      One tool per consumed operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-office-integration-get-services
+      description: Microsoft Office Integration Get Services
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-office-service-communications-services.getservices
+      with:
+        $select: tools.$select
+      outputParameters:
+      - type: object
+        mapping: $.
