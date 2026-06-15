@@ -1,0 +1,194 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Office Integration Microsoft Office 365 Management Activity API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Subscriptions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office Integration Start a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/activity/feed/subscriptions/start",
+            "params": [
+              {
+                "name": "contentType",
+                "value": "",
+                "type": "query",
+                "description": "Must be a valid content type."
+              },
+              {
+                "name": "PublisherIdentifier",
+                "value": "",
+                "type": "query",
+                "description": "The tenant GUID of the vendor coding against the API. Used for throttling the request rate."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts a subscription to the specified content type. If a subscription already exists, this operation can update webhook properties, enable a disabled webhook, re-enable an expired webhook, or remove a webhook."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office Integration Stop a subscription",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/activity/feed/subscriptions/stop",
+            "params": [
+              {
+                "name": "contentType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PublisherIdentifier",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Stops a subscription to the specified content type."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office Integration List current subscriptions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/activity/feed/subscriptions/list",
+            "params": [
+              {
+                "name": "PublisherIdentifier",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Returns a collection of the current subscriptions together with associated webhooks."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office Integration List available content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/activity/feed/subscriptions/content",
+            "params": [
+              {
+                "name": "contentType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PublisherIdentifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (UTC). Must be specified together with endTime and no more than 24 hours apart."
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (UTC). Must be specified together with startTime and no more than 24 hours apart."
+              }
+            ]
+          },
+          "docs": "Lists the content currently available for retrieval for the specified content type. Content is an aggregation of actions and events harvested from multiple servers across multiple datacenters."
+        },
+        {
+          "info": {
+            "name": "Microsoft Office Integration List notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/activity/feed/subscriptions/notifications",
+            "params": [
+              {
+                "name": "contentType",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "PublisherIdentifier",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "startTime",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "endTime",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Lists all notification attempts for the specified content type. Can return multiple notifications for the same content due to retries."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office Integration Retrieve resource friendly names",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/activity/feed/resources/dlpSensitiveTypes",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "PublisherIdentifier",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves friendly names for objects in the data feed identified by GUIDs. Currently only DlpSensitiveType is supported."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

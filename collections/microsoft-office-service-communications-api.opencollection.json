@@ -1,0 +1,184 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Office Integration Microsoft Office 365 Service Communications API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office Integration Get Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/ServiceComms/Services",
+            "params": [
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Pick a subset of properties."
+              }
+            ]
+          },
+          "docs": "Returns the list of subscribed services."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "CurrentStatus",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office Integration Get Current Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/ServiceComms/CurrentStatus",
+            "params": [
+              {
+                "name": "Workload",
+                "value": "",
+                "type": "query",
+                "description": "Filter by workload (default is all)."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Pick a subset of properties."
+              }
+            ]
+          },
+          "docs": "Returns the status of the service from the previous 24 hours, including any current and ongoing service incidents."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "HistoricalStatus",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office Integration Get Historical Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/ServiceComms/HistoricalStatus",
+            "params": [
+              {
+                "name": "Workload",
+                "value": "",
+                "type": "query",
+                "description": "Filter by workload (default is all)."
+              },
+              {
+                "name": "StatusTime",
+                "value": "",
+                "type": "query",
+                "description": "Filter by days greater than StatusTime (default ge CurrentTime - 7 days)."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Pick a subset of properties."
+              }
+            ]
+          },
+          "docs": "Returns the historical status of the service, by day, over a certain time range."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office Integration Get Messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/ServiceComms/Messages",
+            "params": [
+              {
+                "name": "Workload",
+                "value": "",
+                "type": "query",
+                "description": "Filter by workload (default is all)."
+              },
+              {
+                "name": "StartTime",
+                "value": "",
+                "type": "query",
+                "description": "Filter by start time (default ge CurrentTime - 7 days)."
+              },
+              {
+                "name": "EndTime",
+                "value": "",
+                "type": "query",
+                "description": "Filter by end time (default le CurrentTime)."
+              },
+              {
+                "name": "MessageType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by message type (default is all)."
+              },
+              {
+                "name": "Id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by specific message Id."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Pick a subset of properties."
+              },
+              {
+                "name": "$top",
+                "value": "",
+                "type": "query",
+                "description": "Number of top results to return (default and max 100)."
+              },
+              {
+                "name": "$skip",
+                "value": "",
+                "type": "query",
+                "description": "Number of results to skip (default 0)."
+              }
+            ]
+          },
+          "docs": "Returns messages about the service over a certain time range. Use the MessageType filter to filter for Service Incident, Planned Maintenance, or Message Center messages."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

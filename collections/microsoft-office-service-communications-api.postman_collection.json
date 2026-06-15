@@ -1,0 +1,599 @@
+{
+  "item": [
+    {
+      "id": "8f6f5581-0804-4758-8a0c-82928fc2c68d",
+      "name": "CurrentStatus",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "76692a6c-0a47-454c-8c32-ca52227f063b",
+          "name": "Microsoft Office Integration Get Current Status",
+          "request": {
+            "name": "Microsoft Office Integration Get Current Status",
+            "description": {
+              "content": "Returns the status of the service from the previous 24 hours, including any current and ongoing service incidents.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "CurrentStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Workload",
+                  "value": "<string>",
+                  "description": "Filter by workload (default is all)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Pick a subset of properties."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The tenant identifier (domain or GUID)",
+                  "type": "any",
+                  "value": "{{tenantId}}",
+                  "key": "tenantId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0da13a10-97b4-44db-babe-94fffeb5986e",
+              "name": "Current status of services.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "CurrentStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Workload",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The tenant identifier (domain or GUID)",
+                      "type": "any",
+                      "value": "{{tenantId}}",
+                      "key": "tenantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Id\": \"string\",\n      \"Workload\": \"string\",\n      \"StatusDate\": \"1969-09-28T13:53:32.308Z\",\n      \"WorkloadDisplayName\": \"string\",\n      \"Status\": \"ServiceInterruption\",\n      \"IncidentIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"FeatureGroupStatusCollection\": [\n        {\n          \"Feature\": \"string\",\n          \"FeatureGroupDisplayName\": \"string\",\n          \"FeatureStatus\": \"PostIncidentReportPublished\"\n        },\n        {\n          \"Feature\": \"string\",\n          \"FeatureGroupDisplayName\": \"string\",\n          \"FeatureStatus\": \"Investigating\"\n        }\n      ]\n    },\n    {\n      \"Id\": \"string\",\n      \"Workload\": \"string\",\n      \"StatusDate\": \"1973-09-26T10:35:23.997Z\",\n      \"WorkloadDisplayName\": \"string\",\n      \"Status\": \"ExtendedRecovery\",\n      \"IncidentIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"FeatureGroupStatusCollection\": [\n        {\n          \"Feature\": \"string\",\n          \"FeatureGroupDisplayName\": \"string\",\n          \"FeatureStatus\": \"InvestigationSuspended\"\n        },\n        {\n          \"Feature\": \"string\",\n          \"FeatureGroupDisplayName\": \"string\",\n          \"FeatureStatus\": \"RestoringService\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "2bb9b642-2ebf-4b08-b304-e3557b74ea6a",
+      "name": "HistoricalStatus",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b4c305a6-3f07-4cfb-bdf1-cfa3623c7ea8",
+          "name": "Microsoft Office Integration Get Historical Status",
+          "request": {
+            "name": "Microsoft Office Integration Get Historical Status",
+            "description": {
+              "content": "Returns the historical status of the service, by day, over a certain time range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "HistoricalStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Workload",
+                  "value": "<string>",
+                  "description": "Filter by workload (default is all)."
+                },
+                {
+                  "disabled": false,
+                  "key": "StatusTime",
+                  "value": "<dateTime>",
+                  "description": "Filter by days greater than StatusTime (default ge CurrentTime - 7 days)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Pick a subset of properties."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The tenant identifier (domain or GUID)",
+                  "type": "any",
+                  "value": "{{tenantId}}",
+                  "key": "tenantId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3a01d6d4-bd6e-42a5-954a-0b4e3f833fca",
+              "name": "Historical status of services.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "HistoricalStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Workload",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "StatusTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The tenant identifier (domain or GUID)",
+                      "type": "any",
+                      "value": "{{tenantId}}",
+                      "key": "tenantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Id\": \"string\",\n      \"Workload\": \"string\",\n      \"StatusDate\": \"2017-01-02T10:13:45.789Z\",\n      \"WorkloadDisplayName\": \"string\",\n      \"Status\": \"FalsePositive\",\n      \"IncidentIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"FeatureGroupStatusCollection\": [\n        {\n          \"Feature\": \"string\",\n          \"FeatureGroupDisplayName\": \"string\",\n          \"FeatureStatus\": \"ExtendedRecovery\"\n        },\n        {\n          \"Feature\": \"string\",\n          \"FeatureGroupDisplayName\": \"string\",\n          \"FeatureStatus\": \"ServiceDegradation\"\n        }\n      ]\n    },\n    {\n      \"Id\": \"string\",\n      \"Workload\": \"string\",\n      \"StatusDate\": \"1952-01-19T01:47:45.687Z\",\n      \"WorkloadDisplayName\": \"string\",\n      \"Status\": \"InvestigationSuspended\",\n      \"IncidentIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"FeatureGroupStatusCollection\": [\n        {\n          \"Feature\": \"string\",\n          \"FeatureGroupDisplayName\": \"string\",\n          \"FeatureStatus\": \"ServiceInterruption\"\n        },\n        {\n          \"Feature\": \"string\",\n          \"FeatureGroupDisplayName\": \"string\",\n          \"FeatureStatus\": \"ServiceInterruption\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "7e658a2a-e002-443c-bc69-98ebef74ece4",
+      "name": "Messages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "be2612f6-78d5-47e8-aa20-262ee19a6fec",
+          "name": "Microsoft Office Integration Get Messages",
+          "request": {
+            "name": "Microsoft Office Integration Get Messages",
+            "description": {
+              "content": "Returns messages about the service over a certain time range. Use the MessageType filter to filter for Service Incident, Planned Maintenance, or Message Center messages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Workload",
+                  "value": "<string>",
+                  "description": "Filter by workload (default is all)."
+                },
+                {
+                  "disabled": false,
+                  "key": "StartTime",
+                  "value": "<dateTime>",
+                  "description": "Filter by start time (default ge CurrentTime - 7 days)."
+                },
+                {
+                  "disabled": false,
+                  "key": "EndTime",
+                  "value": "<dateTime>",
+                  "description": "Filter by end time (default le CurrentTime)."
+                },
+                {
+                  "disabled": false,
+                  "key": "MessageType",
+                  "value": "<string>",
+                  "description": "Filter by message type (default is all)."
+                },
+                {
+                  "disabled": false,
+                  "key": "Id",
+                  "value": "<string>",
+                  "description": "Filter by specific message Id."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Pick a subset of properties."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "100",
+                  "description": "Number of top results to return (default and max 100)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of results to skip (default 0)."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The tenant identifier (domain or GUID)",
+                  "type": "any",
+                  "value": "{{tenantId}}",
+                  "key": "tenantId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e36dcb39-c8df-48ea-8f3b-00df53bd0e33",
+              "name": "List of service messages.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Workload",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "StartTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "EndTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "MessageType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "100"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The tenant identifier (domain or GUID)",
+                      "type": "any",
+                      "value": "{{tenantId}}",
+                      "key": "tenantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Title\": \"string\",\n      \"StartTime\": \"1952-01-21T14:47:33.421Z\",\n      \"EndTime\": \"1951-06-28T12:59:59.600Z\",\n      \"Status\": \"string\",\n      \"Messages\": [\n        {\n          \"PublishedTime\": \"1999-02-11T03:55:12.042Z\",\n          \"MessageText\": \"string\"\n        },\n        {\n          \"PublishedTime\": \"2023-10-03T00:15:54.950Z\",\n          \"MessageText\": \"string\"\n        }\n      ],\n      \"LastUpdatedTime\": \"2020-12-26T12:47:09.423Z\",\n      \"Workload\": \"string\",\n      \"WorkloadDisplayName\": \"string\",\n      \"Feature\": \"string\",\n      \"FeatureDisplayName\": \"string\",\n      \"MessageType\": \"string\"\n    },\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Title\": \"string\",\n      \"StartTime\": \"2016-08-07T14:52:15.498Z\",\n      \"EndTime\": \"1987-02-08T16:35:01.963Z\",\n      \"Status\": \"string\",\n      \"Messages\": [\n        {\n          \"PublishedTime\": \"1994-03-07T11:40:22.741Z\",\n          \"MessageText\": \"string\"\n        },\n        {\n          \"PublishedTime\": \"1999-10-04T13:35:37.388Z\",\n          \"MessageText\": \"string\"\n        }\n      ],\n      \"LastUpdatedTime\": \"1958-08-29T01:15:13.660Z\",\n      \"Workload\": \"string\",\n      \"WorkloadDisplayName\": \"string\",\n      \"Feature\": \"string\",\n      \"FeatureDisplayName\": \"string\",\n      \"MessageType\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e9814521-7f6b-4529-89ee-0f85ed0b8d71",
+      "name": "Services",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "de9e099c-f04d-4028-bc1b-7c3f19b33f21",
+          "name": "Microsoft Office Integration Get Services",
+          "request": {
+            "name": "Microsoft Office Integration Get Services",
+            "description": {
+              "content": "Returns the list of subscribed services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Pick a subset of properties."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The tenant identifier (domain or GUID)",
+                  "type": "any",
+                  "value": "{{tenantId}}",
+                  "key": "tenantId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb9ea1f0-ff8d-4cf1-b0de-f7db33cae78e",
+              "name": "List of subscribed services.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The tenant identifier (domain or GUID)",
+                      "type": "any",
+                      "value": "{{tenantId}}",
+                      "key": "tenantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Id\": \"string\",\n      \"DisplayName\": \"string\",\n      \"FeatureNames\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"Id\": \"string\",\n      \"DisplayName\": \"string\",\n      \"FeatureNames\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The tenant identifier (domain or GUID)",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "contoso.com",
+      "key": "tenantId"
+    },
+    {
+      "type": "string",
+      "value": "https://manage.office.com/api/v1.0/{{tenantId}}/ServiceComms",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "b042cec8-79c7-4231-9a4d-dd57900478d2",
+    "name": "Microsoft Office Integration Microsoft Office 365 Service Communications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Office 365 Service Communications API provides tenant administrators and partners with real-time service health information and Message Center communications. It enables access to current and historical service status, incident details, and planned maintenance notifications for Office 365, Yammer, Dynamics CRM, and Microsoft Intune cloud services. The API relies on Microsoft Entra ID and the OAuth2 protocol for authentication.\n\nContact Support:\n Name: Microsoft",
+      "type": "text/plain"
+    }
+  }
+}
