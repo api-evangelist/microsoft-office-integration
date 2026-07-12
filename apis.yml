@@ -65,6 +65,12 @@ type: Index
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 access: 3rd-Party
 common:
+  - type: VulnerabilityDisclosure
+    url: security/microsoft-office-integration-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/microsoft-office-integration-domain-security.yml
+  - type: Authentication
+    url: authentication/microsoft-office-integration-authentication.yml
   - type: GitHubOrganization
     url: https://github.com/OfficeDev
   - url: https://learn.microsoft.com/en-us/office/office-365-management-api/
