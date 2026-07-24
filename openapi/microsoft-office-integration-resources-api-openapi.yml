@@ -1,0 +1,85 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Office Integration Microsoft Office 365 Management Activity CurrentStatus Resources API
+  description: The Office 365 Management Activity API provides information about various user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. Customers and partners can use this information to create new or enhance existing operations, security, and compliance-monitoring solutions for the enterprise. The API relies on Microsoft Entra ID and the OAuth2 protocol for authentication and authorization.
+  version: 1.0.0
+  contact:
+    name: Microsoft
+    url: https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+servers:
+- url: https://manage.office.com/api/v1.0/{tenantId}/activity/feed
+  description: Enterprise plan
+  variables:
+    tenantId:
+      description: The GUID of the tenant
+      default: '{tenant_id}'
+- url: https://manage-gcc.office.com/api/v1.0/{tenantId}/activity/feed
+  description: GCC government plan
+  variables:
+    tenantId:
+      description: The GUID of the tenant
+      default: '{tenant_id}'
+- url: https://manage.office365.us/api/v1.0/{tenantId}/activity/feed
+  description: GCC High government plan
+  variables:
+    tenantId:
+      description: The GUID of the tenant
+      default: '{tenant_id}'
+- url: https://manage.protection.apps.mil/api/v1.0/{tenantId}/activity/feed
+  description: DoD government plan
+  variables:
+    tenantId:
+      description: The GUID of the tenant
+      default: '{tenant_id}'
+security:
+- bearerAuth: []
+tags:
+- name: Resources
+paths:
+  /resources/dlpSensitiveTypes:
+    get:
+      operationId: listDlpSensitiveTypes
+      summary: Microsoft Office Integration Retrieve resource friendly names
+      description: Retrieves friendly names for objects in the data feed identified by GUIDs. Currently only DlpSensitiveType is supported.
+      parameters:
+      - name: PublisherIdentifier
+        in: query
+        required: false
+        schema:
+          type: string
+          format: uuid
+      - name: Accept-Language
+        in: header
+        required: false
+        description: Language code for localized names (e.g. en-US, es).
+        schema:
+          type: string
+      responses:
+        '200':
+          description: List of DLP sensitive type friendly names.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/DlpSensitiveType'
+      tags:
+      - Resources
+components:
+  schemas:
+    DlpSensitiveType:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: GUID of the sensitive information type.
+        name:
+          type: string
+          description: Friendly name of the sensitive information type.
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth2 JWT access token obtained from Microsoft Entra ID with ActivityFeed.Read claim.

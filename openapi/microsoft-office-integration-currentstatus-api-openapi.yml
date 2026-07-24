@@ -1,0 +1,133 @@
+openapi: 3.0.3
+info:
+  title: Microsoft Office Integration Microsoft Office 365 Management Activity CurrentStatus API
+  description: The Office 365 Management Activity API provides information about various user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. Customers and partners can use this information to create new or enhance existing operations, security, and compliance-monitoring solutions for the enterprise. The API relies on Microsoft Entra ID and the OAuth2 protocol for authentication and authorization.
+  version: 1.0.0
+  contact:
+    name: Microsoft
+    url: https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+servers:
+- url: https://manage.office.com/api/v1.0/{tenantId}/activity/feed
+  description: Enterprise plan
+  variables:
+    tenantId:
+      description: The GUID of the tenant
+      default: '{tenant_id}'
+- url: https://manage-gcc.office.com/api/v1.0/{tenantId}/activity/feed
+  description: GCC government plan
+  variables:
+    tenantId:
+      description: The GUID of the tenant
+      default: '{tenant_id}'
+- url: https://manage.office365.us/api/v1.0/{tenantId}/activity/feed
+  description: GCC High government plan
+  variables:
+    tenantId:
+      description: The GUID of the tenant
+      default: '{tenant_id}'
+- url: https://manage.protection.apps.mil/api/v1.0/{tenantId}/activity/feed
+  description: DoD government plan
+  variables:
+    tenantId:
+      description: The GUID of the tenant
+      default: '{tenant_id}'
+security:
+- bearerAuth: []
+tags:
+- name: CurrentStatus
+paths:
+  /CurrentStatus:
+    get:
+      operationId: getCurrentStatus
+      summary: Microsoft Office Integration Get Current Status
+      description: Returns the status of the service from the previous 24 hours, including any current and ongoing service incidents.
+      parameters:
+      - name: Workload
+        in: query
+        required: false
+        description: Filter by workload (default is all).
+        schema:
+          type: string
+      - name: $select
+        in: query
+        required: false
+        description: Pick a subset of properties.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Current status of services.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  value:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/WorkloadStatus'
+      tags:
+      - CurrentStatus
+components:
+  schemas:
+    FeatureStatus:
+      type: object
+      properties:
+        Feature:
+          type: string
+        FeatureGroupDisplayName:
+          type: string
+        FeatureStatus:
+          type: string
+          enum:
+          - ServiceOperational
+          - Investigating
+          - ServiceDegradation
+          - ServiceInterruption
+          - RestoringService
+          - ExtendedRecovery
+          - InvestigationSuspended
+          - ServiceRestored
+          - FalsePositive
+          - PostIncidentReportPublished
+          - InformationAvailable
+    WorkloadStatus:
+      type: object
+      properties:
+        Id:
+          type: string
+        Workload:
+          type: string
+        StatusDate:
+          type: string
+          format: date-time
+        WorkloadDisplayName:
+          type: string
+        Status:
+          type: string
+          enum:
+          - ServiceOperational
+          - Investigating
+          - ServiceDegradation
+          - ServiceInterruption
+          - RestoringService
+          - ExtendedRecovery
+          - InvestigationSuspended
+          - ServiceRestored
+          - FalsePositive
+          - PostIncidentReportPublished
+          - InformationAvailable
+        IncidentIds:
+          type: array
+          items:
+            type: string
+        FeatureGroupStatusCollection:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureStatus'
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: OAuth2 JWT access token obtained from Microsoft Entra ID with ActivityFeed.Read claim.
