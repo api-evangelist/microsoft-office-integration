@@ -1,68 +1,209 @@
 aid: microsoft-office-integration
 url: https://raw.githubusercontent.com/api-evangelist/microsoft-office-integration/refs/heads/main/apis.yml
 apis:
-  - aid: microsoft-office-integration:management-activity-api
-    name: Microsoft Office 365 Management Activity API
-    tags:
-      - Auditing
-      - Compliance
-      - Office 365
-      - Security
-    humanURL: https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
-    properties:
-      - url: >-
-          https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
-        type: Documentation
-      - url: openapi/microsoft-office-management-activity-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/subscription.json
-        type: JSONSchema
-      - url: json-schema/activity-record.json
-        type: JSONSchema
-      - url: json-schema/content-blob.json
-        type: JSONSchema
-      - url: json-ld/microsoft-office-integration-context.jsonld
-        type: JSONLD
-    description: >-
-      The Office 365 Management Activity API provides information about various user, admin, system, and policy actions
-      and events from Office 365 and Microsoft Entra activity logs. It enables customers and partners to create or
-      enhance operations, security, and compliance-monitoring solutions. The API supports subscription management,
-      content retrieval, webhook notifications, and DLP sensitive type lookups across content types including Azure AD,
-      Exchange, SharePoint, and General audit logs.
-  - aid: microsoft-office-integration:service-communications-api
-    name: Microsoft Office 365 Service Communications API
-    tags:
-      - Incidents
-      - Monitoring
-      - Office 365
-      - Service Health
-    humanURL: https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-service-communications-api-reference
-    properties:
-      - url: >-
-          https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-service-communications-api-reference
-        type: Documentation
-      - url: openapi/microsoft-office-service-communications-api-openapi.yml
-        type: OpenAPI
-      - url: json-schema/service.json
-        type: JSONSchema
-      - url: json-schema/workload-status.json
-        type: JSONSchema
-      - url: json-schema/message.json
-        type: JSONSchema
-      - url: json-ld/microsoft-office-integration-context.jsonld
-        type: JSONLD
-    description: >-
-      The Office 365 Service Communications API provides tenant administrators and partners with real-time service
-      health information and Message Center communications. It enables access to the list of subscribed services,
-      current and historical service status, incident details, and planned maintenance notifications for Office 365,
-      Yammer, Dynamics CRM, and Microsoft Intune cloud services.
+- aid: microsoft-office-integration:microsoft-office-integration-currentstatus-api
+  name: Microsoft Office Integration CurrentStatus API
+  description: >-
+    The CurrentStatus API from Microsoft Office Integration — 1 operation(s) for currentstatus.
+  humanURL: >-
+    https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+  tags:
+  - CurrentStatus
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-office-integration-currentstatus-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+  - type: JSONSchema
+    url: json-schema/subscription.json
+  - type: JSONSchema
+    url: json-schema/activity-record.json
+  - type: JSONSchema
+    url: json-schema/content-blob.json
+  - type: JSONLD
+    url: json-ld/microsoft-office-integration-context.jsonld
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-service-communications-api-reference
+  - type: JSONSchema
+    url: json-schema/service.json
+  - type: JSONSchema
+    url: json-schema/workload-status.json
+  - type: JSONSchema
+    url: json-schema/message.json
+- aid: microsoft-office-integration:microsoft-office-integration-historicalstatus-api
+  name: Microsoft Office Integration HistoricalStatus API
+  description: >-
+    The HistoricalStatus API from Microsoft Office Integration — 1 operation(s) for historicalstatus.
+  humanURL: >-
+    https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+  tags:
+  - HistoricalStatus
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-office-integration-historicalstatus-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+  - type: JSONSchema
+    url: json-schema/subscription.json
+  - type: JSONSchema
+    url: json-schema/activity-record.json
+  - type: JSONSchema
+    url: json-schema/content-blob.json
+  - type: JSONLD
+    url: json-ld/microsoft-office-integration-context.jsonld
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-service-communications-api-reference
+  - type: JSONSchema
+    url: json-schema/service.json
+  - type: JSONSchema
+    url: json-schema/workload-status.json
+  - type: JSONSchema
+    url: json-schema/message.json
+- aid: microsoft-office-integration:microsoft-office-integration-messages-api
+  name: Microsoft Office Integration Messages API
+  description: The Messages API from Microsoft Office Integration — 1 operation(s) for messages.
+  humanURL: >-
+    https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+  tags:
+  - Messages
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-office-integration-messages-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+  - type: JSONSchema
+    url: json-schema/subscription.json
+  - type: JSONSchema
+    url: json-schema/activity-record.json
+  - type: JSONSchema
+    url: json-schema/content-blob.json
+  - type: JSONLD
+    url: json-ld/microsoft-office-integration-context.jsonld
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-service-communications-api-reference
+  - type: JSONSchema
+    url: json-schema/service.json
+  - type: JSONSchema
+    url: json-schema/workload-status.json
+  - type: JSONSchema
+    url: json-schema/message.json
+- aid: microsoft-office-integration:microsoft-office-integration-resources-api
+  name: Microsoft Office Integration Resources API
+  description: The Resources API from Microsoft Office Integration — 1 operation(s) for resources.
+  humanURL: >-
+    https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+  tags:
+  - Resources
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-office-integration-resources-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+  - type: JSONSchema
+    url: json-schema/subscription.json
+  - type: JSONSchema
+    url: json-schema/activity-record.json
+  - type: JSONSchema
+    url: json-schema/content-blob.json
+  - type: JSONLD
+    url: json-ld/microsoft-office-integration-context.jsonld
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-service-communications-api-reference
+  - type: JSONSchema
+    url: json-schema/service.json
+  - type: JSONSchema
+    url: json-schema/workload-status.json
+  - type: JSONSchema
+    url: json-schema/message.json
+- aid: microsoft-office-integration:microsoft-office-integration-services-api
+  name: Microsoft Office Integration Services API
+  description: The Services API from Microsoft Office Integration — 1 operation(s) for services.
+  humanURL: >-
+    https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+  tags:
+  - Services
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-office-integration-services-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+  - type: JSONSchema
+    url: json-schema/subscription.json
+  - type: JSONSchema
+    url: json-schema/activity-record.json
+  - type: JSONSchema
+    url: json-schema/content-blob.json
+  - type: JSONLD
+    url: json-ld/microsoft-office-integration-context.jsonld
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-service-communications-api-reference
+  - type: JSONSchema
+    url: json-schema/service.json
+  - type: JSONSchema
+    url: json-schema/workload-status.json
+  - type: JSONSchema
+    url: json-schema/message.json
+- aid: microsoft-office-integration:microsoft-office-integration-subscriptions-api
+  name: Microsoft Office Integration Subscriptions API
+  description: >-
+    The Subscriptions API from Microsoft Office Integration — 5 operation(s) for subscriptions.
+  humanURL: >-
+    https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+  tags:
+  - Subscriptions
+  properties:
+  - type: OpenAPI
+    url: openapi/microsoft-office-integration-subscriptions-api-openapi.yml
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
+  - type: JSONSchema
+    url: json-schema/subscription.json
+  - type: JSONSchema
+    url: json-schema/activity-record.json
+  - type: JSONSchema
+    url: json-schema/content-blob.json
+  - type: JSONLD
+    url: json-ld/microsoft-office-integration-context.jsonld
+  - type: Documentation
+    url: >-
+      https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-service-communications-api-reference
+  - type: JSONSchema
+    url: json-schema/service.json
+  - type: JSONSchema
+    url: json-schema/workload-status.json
+  - type: JSONSchema
+    url: json-schema/message.json
 name: Microsoft Office Integration
 tags:
   - Microsoft 365
   - Microsoft Office Integration
   - Office 365
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/microsoft-office-integration.png
 access: 3rd-Party
 common:
   - type: AgenticAccess
