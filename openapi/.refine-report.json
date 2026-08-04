@@ -1,0 +1,24 @@
+{
+  "provider": "microsoft-office-integration",
+  "sources": [
+    "microsoft-office-integration-currentstatus-api-openapi.yml",
+    "microsoft-office-integration-historicalstatus-api-openapi.yml",
+    "microsoft-office-integration-messages-api-openapi.yml",
+    "microsoft-office-integration-resources-api-openapi.yml",
+    "microsoft-office-integration-services-api-openapi.yml",
+    "microsoft-office-integration-subscriptions-api-openapi.yml"
+  ],
+  "outputs": [
+    "microsoft-office-integration-currentstatus-api-openapi.yml",
+    "microsoft-office-integration-historicalstatus-api-openapi.yml",
+    "microsoft-office-integration-messages-api-openapi.yml",
+    "microsoft-office-integration-resources-api-openapi.yml",
+    "microsoft-office-integration-services-api-openapi.yml",
+    "microsoft-office-integration-subscriptions-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
