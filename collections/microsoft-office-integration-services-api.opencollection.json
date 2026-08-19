@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Office Integration Microsoft Office 365 Management Activity CurrentStatus Services API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office Integration Get Services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/activity/feed/Services",
+            "params": [
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Pick a subset of properties."
+              }
+            ]
+          },
+          "docs": "Returns the list of subscribed services."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

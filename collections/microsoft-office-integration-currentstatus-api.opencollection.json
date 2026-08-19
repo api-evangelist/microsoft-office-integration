@@ -1,0 +1,49 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Office Integration Microsoft Office 365 Management Activity CurrentStatus API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "CurrentStatus",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office Integration Get Current Status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/activity/feed/CurrentStatus",
+            "params": [
+              {
+                "name": "Workload",
+                "value": "",
+                "type": "query",
+                "description": "Filter by workload (default is all)."
+              },
+              {
+                "name": "$select",
+                "value": "",
+                "type": "query",
+                "description": "Pick a subset of properties."
+              }
+            ]
+          },
+          "docs": "Returns the status of the service from the previous 24 hours, including any current and ongoing service incidents."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

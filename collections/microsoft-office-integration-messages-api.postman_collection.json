@@ -1,0 +1,224 @@
+{
+  "item": [
+    {
+      "id": "04b4f09f-5fee-4285-8e36-4f57408abe63",
+      "name": "Messages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "47a28560-de7e-4319-9a0a-3054c91a64f7",
+          "name": "Microsoft Office Integration Get Messages",
+          "request": {
+            "name": "Microsoft Office Integration Get Messages",
+            "description": {
+              "content": "Returns messages about the service over a certain time range. Use the MessageType filter to filter for Service Incident, Planned Maintenance, or Message Center messages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "Messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Workload",
+                  "value": "<string>",
+                  "description": "Filter by workload (default is all)."
+                },
+                {
+                  "disabled": false,
+                  "key": "StartTime",
+                  "value": "<dateTime>",
+                  "description": "Filter by start time (default ge CurrentTime - 7 days)."
+                },
+                {
+                  "disabled": false,
+                  "key": "EndTime",
+                  "value": "<dateTime>",
+                  "description": "Filter by end time (default le CurrentTime)."
+                },
+                {
+                  "disabled": false,
+                  "key": "MessageType",
+                  "value": "<string>",
+                  "description": "Filter by message type (default is all)."
+                },
+                {
+                  "disabled": false,
+                  "key": "Id",
+                  "value": "<string>",
+                  "description": "Filter by specific message Id."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Pick a subset of properties."
+                },
+                {
+                  "disabled": false,
+                  "key": "$top",
+                  "value": "100",
+                  "description": "Number of top results to return (default and max 100)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$skip",
+                  "value": "0",
+                  "description": "Number of results to skip (default 0)."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The GUID of the tenant",
+                  "type": "any",
+                  "value": "{{tenantId}}",
+                  "key": "tenantId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b15b3ad4-22f9-427d-96a1-a705da1dc894",
+              "name": "List of service messages.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "Messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Workload",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "StartTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "EndTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "MessageType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "Id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "$top",
+                      "value": "100"
+                    },
+                    {
+                      "key": "$skip",
+                      "value": "0"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The GUID of the tenant",
+                      "type": "any",
+                      "value": "{{tenantId}}",
+                      "key": "tenantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Title\": \"string\",\n      \"StartTime\": \"2007-10-23T10:54:50.191Z\",\n      \"EndTime\": \"2026-07-26T15:54:47.984Z\",\n      \"Status\": \"string\",\n      \"Messages\": [\n        {\n          \"PublishedTime\": \"2011-06-15T06:37:04.653Z\",\n          \"MessageText\": \"string\"\n        },\n        {\n          \"PublishedTime\": \"1976-08-04T19:40:06.834Z\",\n          \"MessageText\": \"string\"\n        }\n      ],\n      \"LastUpdatedTime\": \"1949-02-20T15:18:06.274Z\",\n      \"Workload\": \"string\",\n      \"WorkloadDisplayName\": \"string\",\n      \"Feature\": \"string\",\n      \"FeatureDisplayName\": \"string\",\n      \"MessageType\": \"string\"\n    },\n    {\n      \"Id\": \"string\",\n      \"Name\": \"string\",\n      \"Title\": \"string\",\n      \"StartTime\": \"2007-04-22T11:28:11.602Z\",\n      \"EndTime\": \"1959-05-27T14:48:55.192Z\",\n      \"Status\": \"string\",\n      \"Messages\": [\n        {\n          \"PublishedTime\": \"2009-03-18T04:00:02.551Z\",\n          \"MessageText\": \"string\"\n        },\n        {\n          \"PublishedTime\": \"1957-04-08T13:54:03.361Z\",\n          \"MessageText\": \"string\"\n        }\n      ],\n      \"LastUpdatedTime\": \"1968-05-11T03:32:29.793Z\",\n      \"Workload\": \"string\",\n      \"WorkloadDisplayName\": \"string\",\n      \"Feature\": \"string\",\n      \"FeatureDisplayName\": \"string\",\n      \"MessageType\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The GUID of the tenant",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "{tenant_id}",
+      "key": "tenantId"
+    },
+    {
+      "type": "string",
+      "value": "https://manage.office.com/api/v1.0/{{tenantId}}/activity/feed",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "c1593468-65dc-44f2-aca4-98752e8eb5a4",
+    "name": "Microsoft Office Integration Microsoft Office 365 Management Activity CurrentStatus Messages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Office 365 Management Activity API provides information about various user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. Customers and partners can use this information to create new or enhance existing operations, security, and compliance-monitoring solutions for the enterprise. The API relies on Microsoft Entra ID and the OAuth2 protocol for authentication and authorization.\n\nContact Support:\n Name: Microsoft",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,167 @@
+{
+  "item": [
+    {
+      "id": "308b4c4a-f70b-4d9a-8d61-06641f456da8",
+      "name": "Resources",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4ee3fa33-2493-4757-bc95-b176e87be533",
+          "name": "Microsoft Office Integration Retrieve resource friendly names",
+          "request": {
+            "name": "Microsoft Office Integration Retrieve resource friendly names",
+            "description": {
+              "content": "Retrieves friendly names for objects in the data feed identified by GUIDs. Currently only DlpSensitiveType is supported.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "resources",
+                "dlpSensitiveTypes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "PublisherIdentifier",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The GUID of the tenant",
+                  "type": "any",
+                  "value": "{{tenantId}}",
+                  "key": "tenantId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Language code for localized names (e.g. en-US, es).",
+                "key": "Accept-Language",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "21cf75ef-fc0b-4bb6-b03d-d019ac60d225",
+              "name": "List of DLP sensitive type friendly names.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "resources",
+                    "dlpSensitiveTypes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PublisherIdentifier",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The GUID of the tenant",
+                      "type": "any",
+                      "value": "{{tenantId}}",
+                      "key": "tenantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Language code for localized names (e.g. en-US, es).",
+                    "key": "Accept-Language",
+                    "value": "<string>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"2ffa55b8-e199-bcf8-eb96-b034749aa9d9\",\n    \"name\": \"string\"\n  },\n  {\n    \"id\": \"0d4ed76d-da02-3351-febf-4da11df8ef6b\",\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The GUID of the tenant",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "{tenant_id}",
+      "key": "tenantId"
+    },
+    {
+      "type": "string",
+      "value": "https://manage.office.com/api/v1.0/{{tenantId}}/activity/feed",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d39e1c2e-6359-41cf-aa75-ecdf3b7386b4",
+    "name": "Microsoft Office Integration Microsoft Office 365 Management Activity CurrentStatus Resources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Office 365 Management Activity API provides information about various user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. Customers and partners can use this information to create new or enhance existing operations, security, and compliance-monitoring solutions for the enterprise. The API relies on Microsoft Entra ID and the OAuth2 protocol for authentication and authorization.\n\nContact Support:\n Name: Microsoft",
+      "type": "text/plain"
+    }
+  }
+}

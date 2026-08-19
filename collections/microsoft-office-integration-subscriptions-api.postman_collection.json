@@ -1,0 +1,677 @@
+{
+  "item": [
+    {
+      "id": "cb3a027e-08a7-41e7-bb5f-1164ad079417",
+      "name": "Subscriptions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2bb3c7c3-128e-4d5d-aded-81314f64309e",
+          "name": "Microsoft Office Integration Start a subscription",
+          "request": {
+            "name": "Microsoft Office Integration Start a subscription",
+            "description": {
+              "content": "Starts a subscription to the specified content type. If a subscription already exists, this operation can update webhook properties, enable a disabled webhook, re-enable an expired webhook, or remove a webhook.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "contentType",
+                  "value": "<string>",
+                  "description": "(Required) Must be a valid content type."
+                },
+                {
+                  "disabled": false,
+                  "key": "PublisherIdentifier",
+                  "value": "<uuid>",
+                  "description": "The tenant GUID of the vendor coding against the API. Used for throttling the request rate."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The GUID of the tenant",
+                  "type": "any",
+                  "value": "{{tenantId}}",
+                  "key": "tenantId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"webhook\": {\n    \"address\": \"<uri>\",\n    \"authId\": \"<string>\",\n    \"expiration\": \"<dateTime>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6289ea46-0968-4662-8654-7507ba9d83af",
+              "name": "Subscription started or updated successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "PublisherIdentifier",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The GUID of the tenant",
+                      "type": "any",
+                      "value": "{{tenantId}}",
+                      "key": "tenantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"webhook\": {\n    \"address\": \"<uri>\",\n    \"authId\": \"<string>\",\n    \"expiration\": \"<dateTime>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"contentType\": \"string\",\n  \"status\": \"disabled\",\n  \"webhook\": {\n    \"status\": \"enabled\",\n    \"address\": \"http://QnYjKMdJxwJAeRLem.bnmqzCT\",\n    \"authId\": \"string\",\n    \"expiration\": \"2025-10-07T15:12:45.889Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "496024fa-afc9-4923-8ac1-810d0dea385c",
+          "name": "Microsoft Office Integration Stop a subscription",
+          "request": {
+            "name": "Microsoft Office Integration Stop a subscription",
+            "description": {
+              "content": "Stops a subscription to the specified content type.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "contentType",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "PublisherIdentifier",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The GUID of the tenant",
+                  "type": "any",
+                  "value": "{{tenantId}}",
+                  "key": "tenantId"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cdc99e2e-4e23-4c00-aaa6-4bc98b7f918c",
+              "name": "Subscription stopped successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "PublisherIdentifier",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The GUID of the tenant",
+                      "type": "any",
+                      "value": "{{tenantId}}",
+                      "key": "tenantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ae9940e4-0cd7-4a42-bdc5-5fbfae61c373",
+          "name": "Microsoft Office Integration List current subscriptions",
+          "request": {
+            "name": "Microsoft Office Integration List current subscriptions",
+            "description": {
+              "content": "Returns a collection of the current subscriptions together with associated webhooks.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "PublisherIdentifier",
+                  "value": "<uuid>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The GUID of the tenant",
+                  "type": "any",
+                  "value": "{{tenantId}}",
+                  "key": "tenantId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cfdc89ec-41cf-483c-be29-16ea3b44db1c",
+              "name": "List of current subscriptions.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "PublisherIdentifier",
+                      "value": "<uuid>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The GUID of the tenant",
+                      "type": "any",
+                      "value": "{{tenantId}}",
+                      "key": "tenantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"contentType\": \"string\",\n    \"status\": \"disabled\",\n    \"webhook\": {\n      \"status\": \"disabled\",\n      \"address\": \"https://oWmri.qlezpZ3yvIlyTAbuBUahi4tDJTc6oRV8u3slK.ZWnGJGsQ.eVQAIwp+cYivdl.NntJhgJJGn\",\n      \"authId\": \"string\",\n      \"expiration\": \"2023-10-30T00:58:11.373Z\"\n    }\n  },\n  {\n    \"contentType\": \"string\",\n    \"status\": \"disabled\",\n    \"webhook\": {\n      \"status\": \"expired\",\n      \"address\": \"https://MGzkHiaJKLCqYWmIdBRjmkz.rzoym\",\n      \"authId\": \"string\",\n      \"expiration\": \"1956-01-06T11:32:50.427Z\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "958dca86-db91-4438-91c1-59ba9ce121a3",
+          "name": "Microsoft Office Integration List available content",
+          "request": {
+            "name": "Microsoft Office Integration List available content",
+            "description": {
+              "content": "Lists the content currently available for retrieval for the specified content type. Content is an aggregation of actions and events harvested from multiple servers across multiple datacenters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                "content"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "contentType",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "PublisherIdentifier",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>",
+                  "description": "Start of the time range (UTC). Must be specified together with endTime and no more than 24 hours apart."
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>",
+                  "description": "End of the time range (UTC). Must be specified together with startTime and no more than 24 hours apart."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The GUID of the tenant",
+                  "type": "any",
+                  "value": "{{tenantId}}",
+                  "key": "tenantId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3d12b5c8-7d51-44bd-8ec3-d10e67c682ac",
+              "name": "List of available content blobs.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    "content"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "PublisherIdentifier",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The GUID of the tenant",
+                      "type": "any",
+                      "value": "{{tenantId}}",
+                      "key": "tenantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "URL to retrieve the next page of results if results are truncated.",
+                  "key": "NextPageUri",
+                  "value": "https://hmCfmeWEOlBiOfSKy.nxhjOpiYS,4Sw"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"contentType\": \"string\",\n    \"contentId\": \"string\",\n    \"contentUri\": \"https://CUDPYeLqGDEtzWsvwIJ.lgCIq5LCIv7dRfOGI3ckEqMrepJVxANau3xMNByF1kjGArYWVK+Ypn4DsyyO7x0\",\n    \"contentCreated\": \"2001-02-14T14:30:33.437Z\",\n    \"contentExpiration\": \"2013-04-01T11:52:05.192Z\"\n  },\n  {\n    \"contentType\": \"string\",\n    \"contentId\": \"string\",\n    \"contentUri\": \"http://czPqFHYCFaBpXviJd.xfweihjWLybKjewB686BpNgASNTZEA3NAuBGOvKIybYZhtxriJQ5C9d6i9Xd+GIQzGn1H\",\n    \"contentCreated\": \"2025-01-08T06:48:02.240Z\",\n    \"contentExpiration\": \"1994-05-29T14:36:35.203Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7a233f87-50f5-4894-8cee-262a173d4d80",
+          "name": "Microsoft Office Integration List notifications",
+          "request": {
+            "name": "Microsoft Office Integration List notifications",
+            "description": {
+              "content": "Lists all notification attempts for the specified content type. Can return multiple notifications for the same content due to retries.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "subscriptions",
+                "notifications"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "contentType",
+                  "value": "<string>",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "key": "PublisherIdentifier",
+                  "value": "<uuid>"
+                },
+                {
+                  "disabled": false,
+                  "key": "startTime",
+                  "value": "<dateTime>"
+                },
+                {
+                  "disabled": false,
+                  "key": "endTime",
+                  "value": "<dateTime>"
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The GUID of the tenant",
+                  "type": "any",
+                  "value": "{{tenantId}}",
+                  "key": "tenantId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e36cf26-6aff-4ef7-892f-5cace01cff37",
+              "name": "List of notifications.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "subscriptions",
+                    "notifications"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "contentType",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "PublisherIdentifier",
+                      "value": "<uuid>"
+                    },
+                    {
+                      "key": "startTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "endTime",
+                      "value": "<dateTime>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The GUID of the tenant",
+                      "type": "any",
+                      "value": "{{tenantId}}",
+                      "key": "tenantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "disabled": false,
+                  "description": "URL to retrieve the next page of results.",
+                  "key": "NextPageUri",
+                  "value": "https://hmCfmeWEOlBiOfSKy.nxhjOpiYS,4Sw"
+                },
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"contentType\": \"string\",\n    \"contentId\": \"string\",\n    \"contentUri\": \"https://ZBrsehhJLK.enoIdPvuYheFFA+PlEsWMwrrOFwHeo7nKjvq4FGxy3Aw\",\n    \"contentCreated\": \"1964-12-28T21:12:48.470Z\",\n    \"contentExpiration\": \"1975-10-18T18:32:01.740Z\",\n    \"notificationSent\": \"2021-08-20T01:48:30.894Z\",\n    \"notificationStatus\": \"string\"\n  },\n  {\n    \"contentType\": \"string\",\n    \"contentId\": \"string\",\n    \"contentUri\": \"http://yEqKvUL.rwmfbI3xrspxbm-4\",\n    \"contentCreated\": \"1956-04-30T08:27:56.774Z\",\n    \"contentExpiration\": \"2023-09-10T09:56:29.394Z\",\n    \"notificationSent\": \"2019-03-16T04:58:57.254Z\",\n    \"notificationStatus\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The GUID of the tenant",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "{tenant_id}",
+      "key": "tenantId"
+    },
+    {
+      "type": "string",
+      "value": "https://manage.office.com/api/v1.0/{{tenantId}}/activity/feed",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "a2ca1113-e5ed-4372-a9c7-0466b630cc29",
+    "name": "Microsoft Office Integration Microsoft Office 365 Management Activity CurrentStatus Subscriptions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Office 365 Management Activity API provides information about various user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. Customers and partners can use this information to create new or enhance existing operations, security, and compliance-monitoring solutions for the enterprise. The API relies on Microsoft Entra ID and the OAuth2 protocol for authentication and authorization.\n\nContact Support:\n Name: Microsoft",
+      "type": "text/plain"
+    }
+  }
+}

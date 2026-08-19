@@ -1,0 +1,174 @@
+{
+  "item": [
+    {
+      "id": "628d305a-569c-478c-9927-be02e6ac5bb5",
+      "name": "HistoricalStatus",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6061b0ad-1a57-445f-9582-7809322c4da8",
+          "name": "Microsoft Office Integration Get Historical Status",
+          "request": {
+            "name": "Microsoft Office Integration Get Historical Status",
+            "description": {
+              "content": "Returns the historical status of the service, by day, over a certain time range.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "HistoricalStatus"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "Workload",
+                  "value": "<string>",
+                  "description": "Filter by workload (default is all)."
+                },
+                {
+                  "disabled": false,
+                  "key": "StatusTime",
+                  "value": "<dateTime>",
+                  "description": "Filter by days greater than StatusTime (default ge CurrentTime - 7 days)."
+                },
+                {
+                  "disabled": false,
+                  "key": "$select",
+                  "value": "<string>",
+                  "description": "Pick a subset of properties."
+                }
+              ],
+              "variable": [
+                {
+                  "description": "The GUID of the tenant",
+                  "type": "any",
+                  "value": "{{tenantId}}",
+                  "key": "tenantId"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5b83afc7-08bd-429e-b36a-af65f50b01a8",
+              "name": "Historical status of services.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "HistoricalStatus"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "Workload",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "StatusTime",
+                      "value": "<dateTime>"
+                    },
+                    {
+                      "key": "$select",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "description": "The GUID of the tenant",
+                      "type": "any",
+                      "value": "{{tenantId}}",
+                      "key": "tenantId"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"value\": [\n    {\n      \"Id\": \"string\",\n      \"Workload\": \"string\",\n      \"StatusDate\": \"1999-01-23T09:25:53.549Z\",\n      \"WorkloadDisplayName\": \"string\",\n      \"Status\": \"PostIncidentReportPublished\",\n      \"IncidentIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"FeatureGroupStatusCollection\": [\n        {\n          \"Feature\": \"string\",\n          \"FeatureGroupDisplayName\": \"string\",\n          \"FeatureStatus\": \"ServiceOperational\"\n        },\n        {\n          \"Feature\": \"string\",\n          \"FeatureGroupDisplayName\": \"string\",\n          \"FeatureStatus\": \"InvestigationSuspended\"\n        }\n      ]\n    },\n    {\n      \"Id\": \"string\",\n      \"Workload\": \"string\",\n      \"StatusDate\": \"1969-11-26T10:22:04.919Z\",\n      \"WorkloadDisplayName\": \"string\",\n      \"Status\": \"Investigating\",\n      \"IncidentIds\": [\n        \"string\",\n        \"string\"\n      ],\n      \"FeatureGroupStatusCollection\": [\n        {\n          \"Feature\": \"string\",\n          \"FeatureGroupDisplayName\": \"string\",\n          \"FeatureStatus\": \"RestoringService\"\n        },\n        {\n          \"Feature\": \"string\",\n          \"FeatureGroupDisplayName\": \"string\",\n          \"FeatureStatus\": \"InformationAvailable\"\n        }\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "description": {
+        "content": "The GUID of the tenant",
+        "type": "text/plain"
+      },
+      "type": "any",
+      "value": "{tenant_id}",
+      "key": "tenantId"
+    },
+    {
+      "type": "string",
+      "value": "https://manage.office.com/api/v1.0/{{tenantId}}/activity/feed",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "d8b0c6d7-e281-4c55-987e-740727bac321",
+    "name": "Microsoft Office Integration Microsoft Office 365 Management Activity CurrentStatus HistoricalStatus API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Office 365 Management Activity API provides information about various user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. Customers and partners can use this information to create new or enhance existing operations, security, and compliance-monitoring solutions for the enterprise. The API relies on Microsoft Entra ID and the OAuth2 protocol for authentication and authorization.\n\nContact Support:\n Name: Microsoft",
+      "type": "text/plain"
+    }
+  }
+}

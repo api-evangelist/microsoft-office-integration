@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Office Integration Microsoft Office 365 Management Activity CurrentStatus Resources API",
+    "version": "1.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Resources",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Office Integration Retrieve resource friendly names",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://manage.office.com/api/v1.0/{tenantId}/activity/feed/resources/dlpSensitiveTypes",
+            "headers": [
+              {
+                "name": "Accept-Language",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "PublisherIdentifier",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieves friendly names for objects in the data feed identified by GUIDs. Currently only DlpSensitiveType is supported."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
