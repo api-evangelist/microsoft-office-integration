@@ -8,6 +8,8 @@ apis:
   humanURL: >-
     https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
   tags:
+  - Current Status
+  tags_raw:
   - CurrentStatus
   properties:
   - type: OpenAPI
@@ -69,6 +71,8 @@ apis:
   humanURL: >-
     https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
@@ -160,6 +164,8 @@ apis:
   humanURL: >-
     https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
   tags:
+  - Subscription
+  tags_raw:
   - Subscriptions
   properties:
   - type: OpenAPI
@@ -186,6 +192,10 @@ apis:
     url: json-schema/message.json
 name: Microsoft Office Integration
 tags:
+  - Microsoft-365
+  - Microsoft Office Integration
+  - Office 365
+tags_raw:
   - Microsoft 365
   - Microsoft Office Integration
   - Office 365
