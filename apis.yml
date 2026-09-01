@@ -8,7 +8,7 @@ apis:
   humanURL: >-
     https://learn.microsoft.com/en-us/office/office-365-management-api/office-365-management-activity-api-reference
   tags:
-  - CurrentStatus
+  - Current Status
   tags_raw:
   - CurrentStatus
   properties:
