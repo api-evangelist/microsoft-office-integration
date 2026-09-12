@@ -1,5 +1,5 @@
 aid: microsoft-office-integration
-url: https://raw.githubusercontent.com/api-evangelist/microsoft-office-integration/refs/heads/main/apis.yml
+url: https://developer.microsoft.com/en-us/graph
 apis:
 - aid: microsoft-office-integration:microsoft-office-integration-currentstatus-api
   name: Microsoft Office Integration CurrentStatus API
@@ -268,5 +268,5 @@ maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
 specificationVersion: '0.23'
-x-parent: microsoft
+x-parent: microsoft-365
 x-relationship: product
