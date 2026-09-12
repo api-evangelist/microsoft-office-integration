@@ -19,6 +19,14 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
+  "notes": [
+    "microsoft-office-integration-currentstatus-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "microsoft-office-integration-historicalstatus-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "microsoft-office-integration-messages-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "microsoft-office-integration-resources-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "microsoft-office-integration-services-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "microsoft-office-integration-subscriptions-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
   "skipped": []
 }

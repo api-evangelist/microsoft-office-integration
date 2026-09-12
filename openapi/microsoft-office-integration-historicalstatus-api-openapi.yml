@@ -1,6 +1,6 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Microsoft Office Integration Microsoft Office 365 Management Activity CurrentStatus HistoricalStatus API
+  title: Microsoft Office Integration Microsoft Office 365 Management Activity CurrentStatus Historical Status API
   description: The Office 365 Management Activity API provides information about various user, admin, system, and policy actions and events from Office 365 and Microsoft Entra activity logs. Customers and partners can use this information to create new or enhance existing operations, security, and compliance-monitoring solutions for the enterprise. The API relies on Microsoft Entra ID and the OAuth2 protocol for authentication and authorization.
   version: 1.0.0
   contact:
@@ -77,27 +77,6 @@ paths:
       - HistoricalStatus
 components:
   schemas:
-    FeatureStatus:
-      type: object
-      properties:
-        Feature:
-          type: string
-        FeatureGroupDisplayName:
-          type: string
-        FeatureStatus:
-          type: string
-          enum:
-          - ServiceOperational
-          - Investigating
-          - ServiceDegradation
-          - ServiceInterruption
-          - RestoringService
-          - ExtendedRecovery
-          - InvestigationSuspended
-          - ServiceRestored
-          - FalsePositive
-          - PostIncidentReportPublished
-          - InformationAvailable
     WorkloadStatus:
       type: object
       properties:
@@ -132,6 +111,27 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/FeatureStatus'
+    FeatureStatus:
+      type: object
+      properties:
+        Feature:
+          type: string
+        FeatureGroupDisplayName:
+          type: string
+        FeatureStatus:
+          type: string
+          enum:
+          - ServiceOperational
+          - Investigating
+          - ServiceDegradation
+          - ServiceInterruption
+          - RestoringService
+          - ExtendedRecovery
+          - InvestigationSuspended
+          - ServiceRestored
+          - FalsePositive
+          - PostIncidentReportPublished
+          - InformationAvailable
   securitySchemes:
     bearerAuth:
       type: http
